@@ -47,9 +47,9 @@ func main() {
 	}
 
 	var (
-		tlsCert = "certs/server.pem"
-		tlsKey  = "certs/server-key.pem"
-		caCert  = "certs/ca.pem"
+		tlsCert = "../certs/server.pem"
+		tlsKey  = "../certs/server-key.pem"
+		caCert  = "../certs/ca.pem"
 	)
 	cert, err := tls.LoadX509KeyPair(tlsCert, tlsKey)
 	if err != nil {

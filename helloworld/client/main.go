@@ -23,9 +23,9 @@ const (
 func main() {
 
 	var (
-		tlsCert = "certs/client.pem"
-		tlsKey  = "certs/client-key.pem"
-		caCert  = "certs/ca.pem"
+		tlsCert = "../certs/client.pem"
+		tlsKey  = "../certs/client-key.pem"
+		caCert  = "../certs/ca.pem"
 	)
 	cert, err := tls.LoadX509KeyPair(tlsCert, tlsKey)
 	if err != nil {
