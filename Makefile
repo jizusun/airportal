@@ -9,3 +9,5 @@ cfssl-cert-gen:
 rsync: 
 	rsync -azP certs/{server,server-key,ca}.pem config/server.json \
 		virmach:~/trojan-go-linux-amd64
+	rsync -azP certs/{server,server-key,ca}.pem config/server.json \
+		~/.cfssl_workdir/trojan-go
