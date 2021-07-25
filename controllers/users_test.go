@@ -34,7 +34,6 @@ func TestListUsers(t *testing.T) {
 		wantErr bool
 	}{
 		{"simple", args{"virmach-go.edtechstar.com", 10000}, false},
-		// {"simple", args{"127.0.0.1", 10000}, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
