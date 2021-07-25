@@ -11,3 +11,7 @@ export ADDRESS=
 export NAME=client
 echo '{"CN":"'$NAME'","hosts":[""],"key":{"algo":"rsa","size":2048}}' | cfssl gencert -config=ca-config.json -ca=ca.pem -ca-key=ca-key.pem -hostname="$ADDRESS" - | cfssljson -bare $NAME
 
+
+openssl x509 -in ca.pem -text -noout
+openssl x509 -in server.pem -text -noout
+openssl x509 -in client.pem -text -noout

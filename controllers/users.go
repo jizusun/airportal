@@ -18,11 +18,11 @@ import (
 func ListUsers(host string, port int) error {
 	// https://github.com/p4gefau1t/trojan-go/blob/07fec5eb263658766a5f3597c98bbeb7d7843f31/api/service/server_test.go#L160-L313
 	pool := x509.NewCertPool()
-	certBytes, err := ioutil.ReadFile("../certs/server.crt")
+	certBytes, err := ioutil.ReadFile("../certs/ca.pem")
 	common.Must(err)
 	pool.AppendCertsFromPEM(certBytes)
 
-	certificate, err := tls.LoadX509KeyPair("../certs/client.crt", "../certs/client.key")
+	certificate, err := tls.LoadX509KeyPair("../certs/client.pem", "../certs/client-key.pem")
 	common.Must(err)
 	creds := credentials.NewTLS(&tls.Config{
 		ServerName:   "control.edtechstar.com",

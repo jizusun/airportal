@@ -1,6 +1,7 @@
-PHONY:
-	protobuf-gen
+.PHONY: protobuf-gen server
 
+server:
+	go run server/main.go
 
 # https://grpc.io/docs/languages/go/quickstart/
 protobuf-gen:
@@ -15,3 +16,6 @@ cfssl-cert-gen:
 	cp client.pem  api/client.crt ;\
 	cp server-key.pem api/server.key ;\
 	cp server.pem  api/server.crt
+
+rsync: 
+	rsync -azP certs/api server.json virmach:~/trojan-go-linux-amd64
