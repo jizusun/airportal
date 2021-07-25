@@ -2,12 +2,16 @@ package main
 
 import (
 	"context"
+	"crypto/tls"
+	"crypto/x509"
+	"io/ioutil"
 	"log"
 	"os"
 	"time"
 
 	pb "github.com/jizusun/trojan-manager/helloworld/helloworld"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 )
 
 const (
@@ -16,7 +20,30 @@ const (
 )
 
 func main() {
-	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
+
+	var (
+		tlsCert = "certs/client.pem"
+		tlsKey  = "certs/client-key.pem"
+		caCert  = "certs/ca.pem"
+	)
+	cert, err := tls.LoadX509KeyPair(tlsCert, tlsKey)
+	if err != nil {
+		log.Fatal(err)
+	}
+	rawCaCert, err := ioutil.ReadFile(caCert)
+	if err != nil {
+		log.Fatal(err)
+	}
+	caCertPool := x509.NewCertPool()
+	caCertPool.AppendCertsFromPEM(rawCaCert)
+
+	cred := credentials.NewTLS(&tls.Config{
+		// ServerName: "localhost",
+		Certificates: []tls.Certificate{cert},
+		RootCAs:      caCertPool,
+	})
+
+	conn, err := grpc.Dial(address, grpc.WithTransportCredentials(cred), grpc.WithBlock())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
