@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 	"crypto/x509"
+	"io"
 	"io/ioutil"
 	"log"
 	"os"
@@ -62,4 +63,19 @@ func main() {
 		log.Fatalf("could not greet: %v", err)
 	}
 	log.Printf("Greeting: %s", r.GetMessage())
+
+	stream, err := c.ServerStreamingSayHello(ctx, &pb.HelloRequest{Name: name})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for {
+		greeting, err := stream.Recv()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+		log.Printf("Server streaming: %q", greeting.GetMessage())
+	}
 }

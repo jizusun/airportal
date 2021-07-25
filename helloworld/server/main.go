@@ -32,7 +32,7 @@ func (s *server) ServerStreamingSayHello(in *pb.HelloRequest, stream pb.Greeter_
 		"hi",
 	}
 	for _, greeting := range greetings {
-		g := &pb.HelloReply{Message: greeting + in.GetName()}
+		g := &pb.HelloReply{Message: greeting + ", " + in.GetName()}
 		if err := stream.Send(g); err != nil {
 			return err
 		}
