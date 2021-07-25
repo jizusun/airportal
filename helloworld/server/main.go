@@ -26,6 +26,20 @@ func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
 }
 
+func (s *server) ServerStreamingSayHello(in *pb.HelloRequest, stream pb.Greeter_ServerStreamingSayHelloServer) error {
+	greetings := []string{
+		"hello",
+		"hi",
+	}
+	for _, greeting := range greetings {
+		g := &pb.HelloReply{Message: greeting + in.GetName()}
+		if err := stream.Send(g); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func main() {
 	lis, err := net.Listen("tcp", port)
 	if err != nil {

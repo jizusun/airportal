@@ -6,6 +6,7 @@ package helloworld;
 
 service Greeter {
     rpc SayHello(HelloRequest) returns (HelloReply) {}
+    rpc ServerStreamingSayHello(HelloRequest) returns (stream HelloReply) {}
 }
 
 message HelloRequest {
