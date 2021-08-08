@@ -10,6 +10,14 @@
       "StackName": "amplify-airportal-dev-182800",
       "StackId": "arn:aws:cloudformation:us-east-1:775456991785:stack/amplify-airportal-dev-182800/5269d460-f833-11eb-8334-12a0cb9cc981",
       "AmplifyAppId": "d15c38gx88ttue"
+    },
+    "categories": {
+      "function": {
+        "trojanusers": {
+          "deploymentBucketName": "amplify-airportal-dev-182800-deployment",
+          "s3Key": "amplify-builds/trojanusers-59594963783342755a35-build.zip"
+        }
+      }
     }
   }
 }

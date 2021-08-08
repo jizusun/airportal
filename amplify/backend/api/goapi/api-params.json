@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/users",
+      "lambdaFunction": "trojanusers",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/users"
+    }
+  ],
+  "resourceName": "goapi",
+  "apiName": "goapi",
+  "functionArns": [
+    {
+      "lambdaFunction": "trojanusers"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-airportal-dev-182800-authRole",
+    "unAuthRoleName": "amplify-airportal-dev-182800-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "trojanusers",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

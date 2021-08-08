@@ -1,0 +1,8 @@
+{
+  "lambdaLayers": [],
+  "secretNames": [
+    "clientpem",
+    "clientkeypem",
+    "capem"
+  ]
+}
