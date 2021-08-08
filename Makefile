@@ -1,4 +1,11 @@
-.PHONY: cfssl-cert-gen
+.PHONY: cfssl-cert-gen run
+
+run: 
+	air
+
+install-cfssl:
+	go get github.com/cloudflare/cfssl/cmd/cfssl; \
+	go get github.com/cloudflare/cfssl/cmd/cfssljson
 
 cfssl-cert-gen:
 	mkdir -p certs; \
@@ -7,7 +14,4 @@ cfssl-cert-gen:
 	sh ../scripts/cfssl.sh
 
 rsync: 
-	rsync -azP certs/{server,server-key,ca}.pem config/server.json \
-		virmach:~/trojan-go-linux-amd64
-	rsync -azP certs/{server,server-key,ca}.pem config/server.json \
-		~/.cfssl_workdir/trojan-go
+	./scripts/rsync.sh
