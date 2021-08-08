@@ -15,7 +15,7 @@
       "function": {
         "trojanusers": {
           "deploymentBucketName": "amplify-airportal-dev-182800-deployment",
-          "s3Key": "amplify-builds/trojanusers-59594963783342755a35-build.zip"
+          "s3Key": "amplify-builds/trojanusers-54384431424d4b424d33-build.zip"
         }
       }
     }

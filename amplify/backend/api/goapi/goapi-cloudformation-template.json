@@ -359,7 +359,7 @@
         
         
 
-      "DeploymentAPIGWgoapi": {
+      "DeploymentAPIGWgoapi2f351d7b": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",

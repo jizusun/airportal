@@ -3,6 +3,7 @@ module github.com/jizusun/trojan-manager
 go 1.16
 
 require (
+	github.com/aws/aws-lambda-go v1.26.0 // indirect
 	github.com/cloudflare/cfssl v1.6.0 // indirect
 	github.com/gin-gonic/gin v1.7.2 // indirect
 	github.com/go-playground/validator/v10 v10.7.0 // indirect
