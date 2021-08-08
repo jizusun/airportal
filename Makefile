@@ -3,9 +3,10 @@
 run: 
 	air
 
-install-cfssl:
+install-tools:
 	go get github.com/cloudflare/cfssl/cmd/cfssl; \
 	go get github.com/cloudflare/cfssl/cmd/cfssljson
+	yarn global add @aws-amplify/cli
 
 cfssl-cert-gen:
 	mkdir -p certs; \
